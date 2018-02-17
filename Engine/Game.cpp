@@ -31,7 +31,7 @@ Game::Game( MainWindow& wnd )
 	snek( {2,2} ),
 	goal( rng,brd,snek )
 {
-	sndTitle.Play( 1.0f,1.0f );
+	sndTitle.Play( 1.5f,1.0f );
 }
 
 void Game::Go()
@@ -67,10 +67,15 @@ void Game::UpdateModel()
 				delta_loc = { 1,0 };
 			}
 
-			snekMoveCounter += dt;
-			if( snekMoveCounter >= snekMovePeriod )
+			float snekModifiedMovePeriod = snekMovePeriod;
+			if( wnd.kbd.KeyIsPressed(VK_CONTROL ) )
 			{
-				snekMoveCounter -= snekMovePeriod;
+				snekModifiedMovePeriod = std::min( snekMovePeriod, snekMovePeriodSpeedUp );
+			}
+			snekMoveCounter += dt;
+			if( snekMoveCounter >= snekModifiedMovePeriod )
+			{
+				snekMoveCounter -= snekModifiedMovePeriod;
 				const Location next = snek.GetNextHeadLocation( delta_loc );
 				if( !brd.IsInsideBoard( next ) ||
 					snek.IsInTileExceptEnd( next ) ||
