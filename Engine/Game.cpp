@@ -115,7 +115,6 @@ void Game::UpdateModel()
 					sfxSlither.Play( rng, 0.08f );
 				}
 			}
-			snekMovePeriod = std::max( snekMovePeriod - dt * snekSpeedupFactor,snekMovePeriodMin );
 		}
 	}
 	else

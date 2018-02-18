@@ -57,13 +57,13 @@ private:
 	Sound sndMusic = Sound( L"Sounds\\Music_Loop.wav",Sound::LoopType::AutoFullSound );
 	Sound sndTitle = Sound( L"Sounds\\Title.wav" );
 	SoundEffect sndFart = SoundEffect( { L"Sounds\\Fart.wav" } );
-	static constexpr float snekMovePeriodMin = 0.040f;
-	static constexpr float snekMovePeriodSpeedUp = 0.15f;
-	static constexpr int nPoison = 240;
+	static constexpr int nPoison = 120;
 	static constexpr int nFood = 12;
-	float snekMovePeriod = 0.4f;
-	float snekMoveCounter = 0.0f;
+	static constexpr float snekMovePeriodMin = 0.040f;
+	static constexpr float snekMovePeriodSpeedUp = 0.075f;
 	static constexpr float snekSpeedupFactor = 0.9f;
+	float snekMovePeriod = 0.3f;
+	float snekMoveCounter = 0.0f; 
 	bool gameIsOver = false;
 	bool gameIsStarted = false;
 	/********************************/
